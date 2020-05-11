@@ -53,7 +53,7 @@ public class BoardTest extends BaseTest {
     }
 
     @Test
-    public void deleteBoardRequest() {
+    public void iPerformDeleteBoardRequest() {
         String rndBoardId = getRandomValue(getAllBoardIds());
 
         request()
@@ -66,6 +66,21 @@ public class BoardTest extends BaseTest {
         _logger.info(rndBoardId + " id'li board silindi.");
     }
 
+    @Test
+    public void updateBoardById() {
+        String rndBoardId = getRandomValue(getAllBoardIds());
+        String boardName = "Updated Board Name";
+
+        request()
+                .pathParam("boardId", rndBoardId)
+                .queryParam("name", boardName)
+                .when()
+                .put("boards/{boardId}")
+                .then()
+                .statusCode(HttpStatus.SC_OK);
+
+        _logger.info(rndBoardId + " id'li board güncellendi. Yeni board ismi: " + boardName);
+    }
 
     private List<String> getAllBoardIds() {
 

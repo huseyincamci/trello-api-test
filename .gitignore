@@ -7,7 +7,7 @@ logs
 target
 
 # file: config.properties
-config.properties
+src/test/resources/config.properties
 
 #project.iml files
 *.iml
